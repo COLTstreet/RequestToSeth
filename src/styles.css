@@ -129,6 +129,33 @@ body {
   color: white;
 }
 
+.toggle-container {
+  height: 25px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.toggle-right {
+  height: 100%;
+  width: 50%;
+  float: right;
+  -webkit-transition: all .3s linear 0s;
+  transition: all .3s linear 0s;
+}
+
+.toggle-left {
+  height: 100%;
+  width: 50%;
+  -webkit-transition: all .3s linear 0s;
+  transition: all .3s linear 0s;
+}
+
+.selected {
+  background: #4CAF50;
+  color: #212121;
+}
+
 .movie-box {
   height: 300px;
   overflow: hidden;
@@ -216,14 +243,16 @@ body {
 }
 
 /*OVERRIDES*/
+
 .mat-drawer-container {
   background-color: inherit !important;
   height: 100%;
 }
 
 /*MEDIA QUERIES*/
+
 @media only screen and (max-width: 600px) {
   .movie-overview {
-      font-size: 12px;
+    font-size: 12px;
   }
 }

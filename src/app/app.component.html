@@ -10,10 +10,20 @@
     </div>
   </mat-drawer>
   <mat-drawer-content id="drawer-content">
+    <div class="toggle-container">
+      <div id="sRight" class="toggle-right" (click)="selectType(2)">
+        <span>TV Shows</span>
+      </div>
+      <div id="sLeft" class="toggle-left selected" (click)="selectType(1)">
+        <span>Movies</span>
+      </div>
+    </div>
     <button id="outside-bars" (click)="sideNav.toggle()" style="float: left;height: 40px;" mat-button>
       <i class="fas fa-bars fa-2x"></i>
     </button>
-    <button mat-button style="float: right;height: 40px;" (click)="sendRequest()"><i class="far fa-envelope fa-2x"></i></button>
+    <button mat-button style="float: right;height: 40px;" (click)="sendRequest()">
+      <i class="far fa-envelope fa-2x"></i>
+    </button>
 
     <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
     <form id="search-form" class="search" action="search()">
@@ -25,66 +35,136 @@
       </button>
     </form>
 
-    <div class="columns is-multiline">
-      <div *ngFor="let mov of masterMoviesList.results; let i = index" id="div-{{i}}" class="movie-box column is-one-fifth">
-        <div class="movie-content" [ngStyle]="{
+    <!-- MOVIE SECTION -->
+    <div id="movie-section">
+      <div class="columns is-multiline">
+        <div *ngFor="let mov of masterMoviesList.results; let i = index" id="div-{{i}}" class="movie-box column is-one-fifth">
+          <div class="movie-content" [ngStyle]="{
       'background': 'url(https://image.tmdb.org/t/p/w1280/' + mov.backdrop_path + ')',
       'background-repeat': 'no-repeat',
       'background-size': 'cover',
       'background-position': 'center'
       }">
-          <div id="movie-title-{{i}}" class="movie-title-container">
-            <p class="movie-title-content">
-              <mat-icon matSuffix id="qAdd-{{i}}" class="quick-add-icon" color="white" (click)="addRemove(mov, i)">
-                <i class="fas fa-plus-square"></i>
-              </mat-icon>
-              <mat-icon matSuffix id="qCheck-{{i}}" class="quick-added-icon" style="display: none;" (click)="addRemove(mov, i)">
-                <i class="fas fa-check-square"></i>
-              </mat-icon>
-              <span style="font-size: 2vh;">{{mov.original_title}}</span>
-              <mat-icon matSuffix class="video-icon" (click)="expand(i, mov)">
-                <i class="fab fa-youtube"></i>
-              </mat-icon>
-            </p>
-          </div>
-          <div id="mcp-{{i}}" class="movie-content-placeholder" (click)="expand(i, mov)"></div>
-          <div id="movie-content-{{i}}" class="movie-info-content" style="display: none;">
-            <div class="close-icon">
-              <mat-icon matSuffix [inline]="true" color="white" (click)="expand(i, mov)" style="cursor: pointer">
-                <i class="fas fa-times"></i>
-              </mat-icon>
-            </div>
-            <mat-card class="movie-info-content-top">
-              <div class="movie-content-title">
-                <mat-icon matSuffix id="add-{{i}}" class="add-icon" color="white" (click)="addRemove(mov, i)">
+            <div id="movie-title-{{i}}" class="movie-title-container">
+              <p class="movie-title-content">
+                <mat-icon matSuffix id="qAdd-{{i}}" class="quick-add-icon" color="white" (click)="addRemove(mov, i)">
                   <i class="fas fa-plus-square"></i>
                 </mat-icon>
-                <mat-icon matSuffix id="check-{{i}}" class="added-icon" style="display: none;" (click)="addRemove(mov, i)">
+                <mat-icon matSuffix id="qCheck-{{i}}" class="quick-added-icon" style="display: none;" (click)="addRemove(mov, i)">
                   <i class="fas fa-check-square"></i>
                 </mat-icon>
-                <span style="padding: 5px;">{{selectedTitle.original_title}}</span>
-                <mat-icon matSuffix [inline]="true" color="white" class="imdb-icon" (click)="goToIMDB()">
-                  <i class="fab fa-imdb"></i>
+                <span style="font-size: 2vh;">{{mov.original_title}}</span>
+                <mat-icon matSuffix class="video-icon" (click)="expand(i, mov)">
+                  <i class="fab fa-youtube"></i>
+                </mat-icon>
+              </p>
+            </div>
+            <div id="mcp-{{i}}" class="movie-content-placeholder" (click)="expand(i, mov)"></div>
+            <div id="movie-content-{{i}}" class="movie-info-content" style="display: none;">
+              <div class="close-icon">
+                <mat-icon matSuffix [inline]="true" color="white" (click)="expand(i, mov)" style="cursor: pointer">
+                  <i class="fas fa-times"></i>
                 </mat-icon>
               </div>
-              <div class="columns">
-                <div class="column info">
-                  <div>
-                    <p class="movie-overview">{{selectedTitle.overview}}</p>
+              <mat-card class="movie-info-content-top">
+                <div class="movie-content-title">
+                  <mat-icon matSuffix id="add-{{i}}" class="add-icon" color="white" (click)="addRemove(mov, i)">
+                    <i class="fas fa-plus-square"></i>
+                  </mat-icon>
+                  <mat-icon matSuffix id="check-{{i}}" class="added-icon" style="display: none;" (click)="addRemove(mov, i)">
+                    <i class="fas fa-check-square"></i>
+                  </mat-icon>
+                  <span style="padding: 5px;">{{selectedTitle.original_title}}</span>
+                  <mat-icon matSuffix [inline]="true" color="white" class="imdb-icon" (click)="goToIMDB()">
+                    <i class="fab fa-imdb"></i>
+                  </mat-icon>
+                </div>
+                <div class="columns">
+                  <div class="column info">
+                    <div>
+                      <p class="movie-overview">{{selectedTitle.overview}}</p>
+                    </div>
+                  </div>
+                  <div class="column text-center">
+                    <p class="movie-subinfo">{{selectedTitle.runtime}}m | {{selectedTitle.genreString}} </p>
+                    <p class="movie-subinfo">{{selectedTitle.release_date}} | {{selectedTitle.vote_average}}/10</p>
+                    <p *ngIf="selectedTitle.homepage">
+                      <a href="{{selectedTitle.homepage}}" target="_blank">{{selectedTitle.homepage}}</a>
+                    </p>
                   </div>
                 </div>
-                <div class="column text-center">
-                  <p class="movie-subinfo">{{selectedTitle.runtime}}m | {{selectedTitle.genreString}} </p>
-                  <p class="movie-subinfo">{{selectedTitle.release_date}} | {{selectedTitle.vote_average}}/10</p>
-                  <p *ngIf="selectedTitle.homepage">
-                    <a href="{{selectedTitle.homepage}}" target="_blank">{{selectedTitle.homepage}}</a>
-                  </p>
+                <div>
+                  <iframe id="movie-trailer-container-{{i}}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
                 </div>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TV SECTION -->
+    <div id="tv-section" style="display: none">
+      <div class="columns is-multiline">
+        <div *ngFor="let show of masterTvList.results; let i = index" id="div-tv-{{i}}" class="movie-box column is-one-fifth">
+          <div class="movie-content" [ngStyle]="{
+          'background': 'url(https://image.tmdb.org/t/p/w1280/' + show.backdrop_path + ')',
+          'background-repeat': 'no-repeat',
+          'background-size': 'cover',
+          'background-position': 'center'
+          }">
+            <div id="tv-title-{{i}}" class="movie-title-container">
+              <p class="movie-title-content">
+                <mat-icon matSuffix id="qAdd-tv-{{i}}" class="quick-add-icon" color="white" (click)="addRemoveShow(show, i)">
+                  <i class="fas fa-plus-square"></i>
+                </mat-icon>
+                <mat-icon matSuffix id="qCheck-tv-{{i}}" class="quick-added-icon" style="display: none;" (click)="addRemoveShow(show, i)">
+                  <i class="fas fa-check-square"></i>
+                </mat-icon>
+                <span style="font-size: 2vh;">{{show.original_name}}</span>
+                <mat-icon matSuffix class="video-icon" (click)="expand(i, show)">
+                  <i class="fab fa-youtube"></i>
+                </mat-icon>
+              </p>
+            </div>
+            <div id="mcp-tv-{{i}}" class="movie-content-placeholder" (click)="expand(i, show)"></div>
+            <div id="tv-content-{{i}}" class="movie-info-content" style="display: none;">
+              <div class="close-icon">
+                <mat-icon matSuffix [inline]="true" color="white" (click)="expand(i, show)" style="cursor: pointer">
+                  <i class="fas fa-times"></i>
+                </mat-icon>
               </div>
-              <div>
-                <iframe id="movie-trailer-container-{{i}}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-              </div>
-            </mat-card>
+              <mat-card class="movie-info-content-top">
+                <div class="movie-content-title">
+                  <mat-icon matSuffix id="add-tv-{{i}}" class="add-icon" color="white" (click)="addRemoveShow(show, i)">
+                    <i class="fas fa-plus-square"></i>
+                  </mat-icon>
+                  <mat-icon matSuffix id="check-tv-{{i}}" class="added-icon" style="display: none;" (click)="addRemoveShow(show, i)">
+                    <i class="fas fa-check-square"></i>
+                  </mat-icon>
+                  <span style="padding: 5px;">{{selectedShow.original_name}}</span>
+                  <mat-icon matSuffix [inline]="true" color="white" class="imdb-icon" (click)="goToIMDB()">
+                    <i class="fab fa-imdb"></i>
+                  </mat-icon>
+                </div>
+                <div class="columns">
+                  <div class="column info">
+                    <div>
+                      <p class="movie-overview">{{selectedShow.overview}}</p>
+                    </div>
+                  </div>
+                  <div class="column text-center">
+                    <p class="movie-subinfo">{{selectedShow.episode_run_time[0]}}m | {{selectedShow.genreString}} </p>
+                    <p class="movie-subinfo">{{selectedShow.first_air_date}} | {{selectedShow.vote_average}}/10</p>
+                    <p *ngIf="selectedShow.homepage">
+                      <a href="{{selectedShow.homepage}}" target="_blank">{{selectedShow.homepage}}</a>
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <iframe id="tv-trailer-container-{{i}}" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </mat-card>
+            </div>
           </div>
         </div>
       </div>
