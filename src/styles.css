@@ -1,1 +1,229 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100% !important;
+  font-size: 16px !important;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/41294/hero.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.columns {
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.column {
+  padding: 0 !important;
+}
+
+.search {
+  width: 50%;
+  height: 40px;
+  margin: 0 auto;
+  background: #444;
+  background: rgba(0, 0, 0, .2);
+  border-radius: 3px;
+  border: 1px solid #fff;
+}
+
+.search input {
+  width: 80%;
+  padding: 10px 5px;
+  float: left;
+  color: #ccc;
+  border: 0;
+  background: transparent;
+  border-radius: 3px 0 0 3px;
+}
+
+.search input:focus {
+  outline: 0;
+  background: transparent;
+}
+
+.search button {
+  position: relative;
+  float: right;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  height: 39px;
+  width: 20%;
+  color: #fff;
+  background: transparent;
+  border-left: 1px solid #fff;
+  border-radius: 0 3px 3px 0;
+  overflow: hidden;
+}
+
+.search button:hover {
+  background: #fff;
+  color: #444;
+}
+
+.search button:active {
+  box-shadow: 0px 0px 12px 0px rgba(225, 225, 225, 1);
+}
+
+.search button:focus {
+  outline: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.text-center {
+  text-align: center;
+  overflow: hidden;
+}
+
+.movie-content {
+  height: 100%;
+}
+
+.movie-title-container {
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+}
+
+.movie-title-content {
+  color: white;
+  z-index: -1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.movie-content-placeholder {
+  height: 100%;
+}
+
+.movie-info-content {
+  height: 100%;
+}
+
+.movie-subinfo {
+  font-size: 18px;
+}
+
+.movie-info-content-top {
+  margin: 0 auto;
+  width: 80%;
+  color: white !important;
+  background: rgba(0, 0, 0, .9) !important;
+}
+
+.movie-content-title {
+  text-align: center;
+  font-size: 26px;
+  border-bottom: 1px solid white;
+}
+
+.info {
+  color: white;
+}
+
+.movie-box {
+  height: 300px;
+  overflow: hidden;
+  transition: 0.7s;
+  -webkit-transition: 0.7s;
+}
+
+.movie-box.fullScreen {
+  left: 0;
+  bottom: 0;
+}
+
+.sidenav-container {
+  width: 60%;
+}
+
+.drawer-content {
+  position: fixed;
+  top: 40px;
+  color: #212121;
+  width: 100%;
+  z-index: 1;
+  font-size: 22px;
+}
+
+.drawer-title {
+  padding: 20px;
+  border-bottom: 1px solid #212121;
+}
+
+#drawer-content {
+  margin-left: 0px !important;
+}
+
+/*ICONS*/
+
+.search-icon {
+  cursor: pointer;
+}
+
+.quick-add-icon {
+  float: left;
+  cursor: pointer;
+}
+
+.add-icon {
+  float: right;
+  cursor: pointer;
+}
+
+.quick-added-icon {
+  float: left;
+  cursor: pointer;
+  color: #4CAF50;
+}
+
+.added-icon {
+  float: right;
+  cursor: pointer;
+  color: #4CAF50;
+}
+
+.video-icon {
+  float: right;
+  cursor: pointer;
+  color: #e52d27;
+}
+
+.imdb-icon {
+  cursor: pointer;
+  color: #f5de50;
+}
+
+.close-icon {
+  font-size: 30px;
+  float: left;
+  color: white;
+  height: 100%;
+  width: 10%;
+  padding-left: 20px;
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+}
+
+/*OVERRIDES*/
+.mat-drawer-container {
+  background-color: inherit !important;
+  height: 100%;
+}
+
+/*MEDIA QUERIES*/
+@media only screen and (max-width: 600px) {
+  .movie-overview {
+      font-size: 12px;
+  }
+}
