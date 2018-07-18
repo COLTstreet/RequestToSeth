@@ -171,11 +171,11 @@ export class AppComponent implements OnInit {
             $('#div-' + i).show();
           }
         }
-        $(window).scrollTop(this.scrollPos);
+        $( "#drawer-content" ).scrollTop(this.scrollPos);
         this.showTitleContent = false;
       } else {
         this.selectTitle(id, mov);
-        this.scrollPos = $(window).scrollTop();
+        this.scrollPos = $( "#drawer-content" ).scrollTop();
         $('#div-' + id).height(window.innerHeight - 65);
         $('#div-' + id).width(window.innerWidth);
         $('#movie-title-' + id).hide();
@@ -200,11 +200,11 @@ export class AppComponent implements OnInit {
             $('#div-tv-' + i).show();
           }
         }
-        $(window).scrollTop(this.scrollPos);
+        $( "#drawer-content" ).scrollTop(this.scrollPos);
         this.showTitleContent = false;
       } else {
         this.selectShow(id, mov);
-        this.scrollPos = $(window).scrollTop();
+        this.scrollPos = $( "#drawer-content" ).scrollTop();
         $('#div-tv-' + id).height(window.innerHeight - 65);
         $('#div-tv-' + id).width(window.innerWidth);
         $('#tv-title-' + id).hide();
