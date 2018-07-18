@@ -306,7 +306,7 @@ export class AppComponent implements OnInit {
         const searchData = ajax("https://api.themoviedb.org/3/search/tv?api_key=7f5c7cfc2f811e4c7c6c6e5ee73bba99&query=" + query);
         //Subscribe to create the request
         searchData.subscribe(res => {
-          this.masterMoviesList = res.response;
+          this.masterTvList = res.response;
           console.log(res.status, res.response)
   
           //Loading Complete
