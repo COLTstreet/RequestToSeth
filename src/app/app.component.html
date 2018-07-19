@@ -11,11 +11,11 @@
   </mat-drawer>
   <mat-drawer-content id="drawer-content">
     <div class="toggle-container">
-      <div id="sRight" class="toggle-right" (click)="selectType(2)">
-        <span>TV Shows</span>
+      <div class="toggle-right">
+        <button id="sRight" class="full-width" mat-button (click)="selectType(2)">TV Shows</button>
       </div>
-      <div id="sLeft" class="toggle-left selected" (click)="selectType(1)">
-        <span>Movies</span>
+      <div class="toggle-left">
+          <button id="sLeft" class="full-width selected" mat-button (click)="selectType(1)">Movies</button>
       </div>
     </div>
     <button id="outside-bars" (click)="sideNav.toggle()" style="float: left;height: 40px;" mat-button>

@@ -4,7 +4,7 @@ html,
 body {
   height: 100% !important;
   font-size: 16px !important;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/41294/hero.jpg) no-repeat center center fixed;
+  background: url(https://cdn.pixabay.com/photo/2017/11/24/10/43/admission-2974645_960_720.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -130,10 +130,11 @@ body {
 }
 
 .toggle-container {
-  height: 25px;
+  height: 36px;
   width: 100%;
   text-align: center;
   color: white;
+  cursor: pointer;
 }
 
 .toggle-right {
@@ -152,13 +153,14 @@ body {
 }
 
 .selected {
-  background: #4CAF50;
-  color: #212121;
+  background: #388E3C !important;
+  color: white !important;
 }
 
 .movie-box {
   height: 300px;
   overflow: hidden;
+  border: 1px solid #212121;
   transition: 0.7s;
   -webkit-transition: 0.7s;
 }
@@ -254,5 +256,8 @@ body {
 @media only screen and (max-width: 600px) {
   .movie-overview {
     font-size: 12px;
+  }
+  .close-icon {
+    font-size: 20px;
   }
 }
